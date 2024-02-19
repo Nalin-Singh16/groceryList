@@ -5,27 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%=product.name %>
+        <%= product.name %>
     </title>
 </head>
 
 <body>
     <h1>
-        <%=product.name %>
+        <%= product.name %>
     </h1>
     <ul>
-        <li><b>Price:</b> &#8377;<%=product.price%>
+        <li>Price: $<%= product.price%>
         </li>
-        <li><b>Category:</b><a href="/products?category=<%=product.category%>">
-                <%=product.category%>
-            </a>
-        </li>
+        <li>Category: <a href="/products?category=<%= product.category%>">
+                <%= product.category%>
+            </a></li>
+        <li>Farm: <a href="/farms/<%=product.farm._id%>">
+                <%= product.farm.name%>
+            </a></li>
     </ul>
     <a href="/products">All Products</a>
     <a href="/products/<%=product._id%>/edit">Edit Product</a>
-    <form action="/products/<%=product._id%>?_method=DELETE" method="post">
+    <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
         <button>Delete</button>
     </form>
+
 </body>
 
 </html>

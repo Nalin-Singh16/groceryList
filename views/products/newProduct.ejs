@@ -8,15 +8,18 @@
 </head>
 
 <body>
-    <h1>Add Product</h1>
-    <form action="/products" method="post">
-        <label for="name">Product</label>
-        <input type="text" name='name' placeholder="product name" id="name">
-        <label for="price">Price (in rupees)</label>
-        <input type="number" name='price' placeholder="price" id="price">
+    <h1>
+        <%=farm.name%>
+    </h1>
+    <h2>Add a Product</h2>
+    <form action="/farms/<%=farm._id%>/products" method="POST">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name" placeholder="product name">
+        <label for="price">Price (Unit)</label>
+        <input type="number" id="price" name="price" placeholder="price">
         <label for="category">Select Category</label>
         <select name="category" id="category">
-            <% for (let category of categories ) {%>
+            <% for(let category of categories){ %>
                 <option value="<%=category%>">
                     <%=category%>
                 </option>
@@ -24,7 +27,9 @@
         </select>
         <button>Submit</button>
     </form>
-    <a href="/products">Cancel</a>
+    <a href="/farms/<%=farm._id%>">Back To Farm</a>
+
+
 </body>
 
 </html>

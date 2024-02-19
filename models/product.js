@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-//No need to connect to DB as we will be requiring the models in index.js
 
-const productSchema = new mongoose.Schema({
+const { Schema } = mongoose
+
+const productSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -15,6 +16,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         enum: ['fruit', 'vegetable', 'dairy']
+    }, //embedding the farm id into product document
+    farm: {
+        type: Schema.Types.ObjectId,
+        ref: 'Farm' //name of the model we will be establishing relation with
     }
 })
 // define a schema above (a type and validation template for document)
